@@ -1,4 +1,4 @@
-import { Component } from '@stencil/core';
+import { Component, Listen, Prop } from '@stencil/core';
 
 
 @Component({
@@ -7,11 +7,32 @@ import { Component } from '@stencil/core';
 })
 export class AppHome {
 
+  @Prop({ connect: 'ion-popover-controller' }) popoverCtrl: HTMLIonPopoverControllerElement;
+
+  @Listen('ionFocus')
+  async handleElementFocused(event: any) {
+
+    if (event.target.id === "optionsMenu") {
+
+      var popover = await this.popoverCtrl.create({
+        component: 'app-home-options-menu',
+        ev: event
+      });
+      
+      await popover.present();
+    }
+  }
+
   render() {
     return [
       <ion-header>
         <ion-toolbar color='primary'>
           <ion-title>Ionic PWA Toolkit</ion-title>
+          <ion-buttons slot="end">
+            <ion-button id="optionsMenu">
+              <ion-icon slot="icon-only" name="more"></ion-icon>
+            </ion-button>
+          </ion-buttons>
         </ion-toolbar>
       </ion-header>,
 

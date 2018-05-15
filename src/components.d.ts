@@ -33,6 +33,39 @@ import {
 declare global {
 
   namespace StencilComponents {
+    interface AppHomeOptionsMenu {
+
+    }
+  }
+
+  interface HTMLAppHomeOptionsMenuElement extends StencilComponents.AppHomeOptionsMenu, HTMLStencilElement {}
+
+  var HTMLAppHomeOptionsMenuElement: {
+    prototype: HTMLAppHomeOptionsMenuElement;
+    new (): HTMLAppHomeOptionsMenuElement;
+  };
+  interface HTMLElementTagNameMap {
+    'app-home-options-menu': HTMLAppHomeOptionsMenuElement;
+  }
+  interface ElementTagNameMap {
+    'app-home-options-menu': HTMLAppHomeOptionsMenuElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'app-home-options-menu': JSXElements.AppHomeOptionsMenuAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppHomeOptionsMenuAttributes extends HTMLAttributes {
+
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
     interface AppHome {
 
     }
